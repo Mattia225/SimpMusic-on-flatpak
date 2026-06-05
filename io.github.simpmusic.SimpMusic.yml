@@ -1,0 +1,74 @@
+app-id: io.github.simpmusic.SimpMusic
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: start-simpmusic
+
+finish-args:
+  # Permessi Hardware/Audio/Rete
+  - --socket=x11
+  - --socket=pulseaudio
+  - --share=network
+  - --device=dri
+  
+  # I Permessi Chirurgici (Maiuscole e Minuscole) con auto-creazione sul sistema host
+  - --filesystem=xdg-download
+  - --filesystem=xdg-music
+  - --filesystem=xdg-config/simpmusic:create
+  - --filesystem=xdg-config/SimpMusic:create
+  - --filesystem=xdg-data/simpmusic:create
+  - --filesystem=xdg-data/SimpMusic:create
+  - --filesystem=~/SimpMusicData:create
+
+  # Fix Grafici e Variabili d'ambiente per Sway/Wayland
+  - --env=_JAVA_AWT_WM_NONREPARENTING=1
+  - --env=SKIKO_RENDER_API=SOFTWARE
+  - --env=LIBGL_ALWAYS_SOFTWARE=1
+  - --env=VLC_DISABLE_HW_ACCEL=1
+
+modules:
+  - name: simpmusic
+    buildsystem: simple
+    build-commands:
+      # Copiamo l'app e installiamo lo script
+      - cp -r squashfs-root /app/simpmusic
+      - install -D -m 755 start-simpmusic /app/bin/start-simpmusic
+      
+      # Creiamo le cartelle per l'icona e il file .desktop
+      - mkdir -p /app/share/applications /app/share/icons/hicolor/256x256/apps
+      
+      # Copiamo l'icona e la rinominiamo col nome corretto del Flatpak
+      - cp squashfs-root/*.png /app/share/icons/hicolor/256x256/apps/io.github.simpmusic.SimpMusic.png || true
+      
+      # Creiamo il file .desktop perfetto da zero
+      - |
+        cat <<EOF > /app/share/applications/io.github.simpmusic.SimpMusic.desktop
+        [Desktop Entry]
+        Name=SimpMusic1
+        Comment=A simple music player
+        Exec=start-simpmusic
+        Icon=io.github.simpmusic.SimpMusic
+        Terminal=false
+        Type=Application
+        Categories=Audio;Music;Player;AudioVideo;
+        StartupWMClass=com-maxrave-simpmusic-MainKt
+        EOF
+      
+    sources:
+      # L'App estratta
+      - type: dir
+        path: squashfs-root
+        dest: squashfs-root
+        
+      # IL VERO E PROPRIO SCRIPT MAGICO
+      - type: script
+        dest-filename: start-simpmusic
+        commands:
+          # 1. Prepariamo il terreno creando forzatamente tutte le cartelle vitali
+          - mkdir -p ~/.config/simpmusic ~/.config/SimpMusic
+          - mkdir -p ~/.local/share/simpmusic ~/.local/share/SimpMusic
+          - mkdir -p ~/.cache/simpmusic ~/.cache/SimpMusic
+          - mkdir -p ~/SimpMusicData
+          
+          # 2. Lanciamo il binario puro, ora troverà tutte le sue casette pronte ad accoglierlo
+          - exec /app/simpmusic/bin/simpmusic "$@"
