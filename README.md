@@ -81,3 +81,9 @@ for_window [class="Vlc"] floating enable, move scratchpad
 This repository provides exclusively the Flatpak packaging, configuration, and distribution manifest. The SimpMusic application, its source code, and assets are created, developed, and maintained by **maxrave-dev**.
 
 The upstream project repository can be found at: [https://github.com/maxrave-dev/SimpMusic](https://github.com/maxrave-dev/SimpMusic)
+## Application Preview
+
+| | |
+|:---:|:---:|
+| ![Screenshot 1](images/ss1.png) | ![Screenshot 2](images/ss2.png) |
+| ![Screenshot 3](images/ss3.png) | ![Screenshot 4](images/ss4.png) |
