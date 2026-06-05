@@ -1,6 +1,6 @@
 # SimpMusic Flatpak Manifest
 
-This repository contains an automated Flatpak manifest for SimpMusic (version 1.3.0), specifically optimized for Wayland environments (such as Sway WM) and configured with extended data persistence parameters.
+This repository contains an automated Flatpak manifest for SimpMusic (version 1.3.0), specifically optimized for Wayland environments (such as Sway WM and Hyprland WM) and configured with extended data persistence parameters.
 
 ---
 
@@ -63,7 +63,7 @@ flatpak run io.github.simpmusic.SimpMusic
 
 ---
 
-## Recommended Window Manager Configuration (Sway WM)
+## Recommended Window Manager Configuration (Sway WM and Hyprland WM) 
 
 To enforce proper floating behavior and set deterministic window geometry for the application interface within a tiling layout, append the following rule to the Sway configuration file (`~/.config/sway/config`):
 
