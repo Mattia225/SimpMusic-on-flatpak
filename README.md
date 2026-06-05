@@ -70,6 +70,8 @@ To enforce proper floating behavior and set deterministic window geometry for th
 ```sway
 # Enforce floating mode and centered geometry for SimpMusic
 for_window [title="^SimpMusic1$"] floating enable, border normal, resize set width 1000, resize set height 700, move position center
+# Optional: Enable floating and move to scratchpad for secondary media utilities (e.g., VLC)
+for_window [class="Vlc"] floating enable, move scratchpad
 ```
 
 ---
