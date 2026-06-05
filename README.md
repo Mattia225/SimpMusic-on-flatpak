@@ -2,7 +2,7 @@
 
 This repository contains an automated Flatpak manifest for SimpMusic (version 1.3.0), specifically optimized for Wayland environments (such as Sway WM) and configured with extended data persistence parameters.
 
-The build process is fully automated. The manifest pulls the official release directly from the upstream repository (maxrave-dev), verifies the source integrity using an explicit SHA256 checksum, and compiles the deployment sandbox without requiring manual file extraction.
+The build process is fully automated. The manifest pulls the official release directly from the upstream repository, verifies the source integrity using an explicit SHA256 checksum, and compiles the deployment sandbox without requiring manual file extraction.
 
 ---
 
@@ -48,3 +48,11 @@ To enforce proper floating behavior and set deterministic window geometry for th
 # Enforce floating mode and centered geometry for SimpMusic
 for_window [title="^SimpMusic1$"] floating enable, border normal, resize set width 1000, resize set height 700, move position center
 ```
+
+---
+
+## Credits and Acknowledgements
+
+This repository provides exclusively the Flatpak packaging, configuration, and distribution manifest. The SimpMusic application, its source code, and assets are created, developed, and maintained by **maxrave-dev**. 
+
+The upstream project repository can be found at: [https://github.com/maxrave-dev/SimpMusic](https://github.com/maxrave-dev/SimpMusic)
