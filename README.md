@@ -2,30 +2,53 @@
 
 This repository contains an automated Flatpak manifest for SimpMusic (version 1.3.0), specifically optimized for Wayland environments (such as Sway WM) and configured with extended data persistence parameters.
 
-The build process is fully automated. The manifest pulls the official release directly from the upstream repository, verifies the source integrity using an explicit SHA256 checksum, and compiles the deployment sandbox without requiring manual file extraction.
-
 ---
 
-## Prerequisites
+## Prerequisites and Dependencies
 
-Ensure that both `flatpak` and `flatpak-builder` are installed on the host system. 
+Before deploying the manifest, ensure that `git`, `flatpak`, and `flatpak-builder` are properly configured on your host operating system.
 
-For Arch Linux deployment:
+### Arch Linux / Manjaro
 ```bash
-sudo pacman -S flatpak flatpak-builder
+sudo pacman -S git flatpak flatpak-builder
+```
+
+### Ubuntu / Debian / Linux Mint
+```bash
+sudo apt update && sudo apt install -y git flatpak flatpak-builder
+```
+
+### Fedora / RHEL
+```bash
+sudo dnf install -y git flatpak flatpak-builder
+```
+
+### openSUSE
+```bash
+sudo zypper install -y git flatpak flatpak-builder
 ```
 
 ---
 
-## Build and Installation Instructions
+## Automated All-In-One Installation (Recommended)
 
-To initiate the compilation and perform a local user space installation, execute the following command from the root of this repository:
+You can download, clone, compile, and install this Flatpak locally with a single terminal instruction. Run the following command:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Mattia225/simpmusic-flatpak/main/install.sh | bash
+```
+
+---
+
+## Manual Build Instructions
+
+Alternatively, if you prefer to compile the application deployment sequence manually from within a local clone of the repository, execute:
 
 ```bash
 flatpak-builder --user --install build-dir io.github.simpmusic.SimpMusic.yml --force-clean
 ```
 
-Upon successful compilation, the application can be initialized via standard desktop application launchers (e.g., Rofi, Wofi) or explicitly via the command line interface:
+Upon a successful build process, the runtime can be initialized via any desktop application runner or directly via the command-line interface:
 ```bash
 flatpak run io.github.simpmusic.SimpMusic
 ```
@@ -53,6 +76,6 @@ for_window [title="^SimpMusic1$"] floating enable, border normal, resize set wid
 
 ## Credits and Acknowledgements
 
-This repository provides exclusively the Flatpak packaging, configuration, and distribution manifest. The SimpMusic application, its source code, and assets are created, developed, and maintained by **maxrave-dev**. 
+This repository provides exclusively the Flatpak packaging, configuration, and distribution manifest. The SimpMusic application, its source code, and assets are created, developed, and maintained by **maxrave-dev**.
 
 The upstream project repository can be found at: [https://github.com/maxrave-dev/SimpMusic](https://github.com/maxrave-dev/SimpMusic)
