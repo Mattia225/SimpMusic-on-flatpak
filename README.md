@@ -35,7 +35,7 @@ sudo zypper install -y git flatpak flatpak-builder
 You can download, clone, compile, and install this Flatpak locally with a single terminal instruction. Run the following command:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Mattia225/simpmusic-flatpak/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Mattia225/SimpMusic-on-flatpak/main/install.sh | bash
 ```
 
 ---
