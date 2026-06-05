@@ -67,6 +67,8 @@ flatpak run io.github.simpmusic.SimpMusic
 
 To enforce proper floating behavior and set deterministic window geometry for the application interface within a tiling layout, append the following rule to the Sway configuration file (`~/.config/sway/config`):
 
+for sway config
+
 ```sway
 # Enforce floating mode and centered geometry for SimpMusic
 for_window [title="^SimpMusic1$"] floating enable, border normal, resize set width 1000, resize set height 700, move position center
@@ -74,6 +76,19 @@ for_window [title="^SimpMusic1$"] floating enable, border normal, resize set wid
 for_window [class="Vlc"] floating enable, move scratchpad
 ```
 
+for hyprland config
+
+```hyprland
+
+# Enforce floating mode and centered geometry for SimpMusic
+windowrulev2 = float, title:^(SimpMusic1)$
+windowrulev2 = size 1000 700, title:^(SimpMusic1)$
+windowrulev2 = center, title:^(SimpMusic1)$
+
+# Optional: Enable floating and move to special workspace (scratchpad) for VLC
+windowrulev2 = float, class:^(Vlc)$
+windowrulev2 = movetoworkspace special:scratchpad, class:^(Vlc)$
+```
 ---
 
 ## Credits and Acknowledgements
