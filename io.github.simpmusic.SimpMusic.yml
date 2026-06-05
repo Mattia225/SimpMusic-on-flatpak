@@ -30,7 +30,11 @@ modules:
   - name: simpmusic
     buildsystem: simple
     build-commands:
-      # Copiamo l'app e installiamo lo script
+      # 1. MODIFICA: Estraiamo l'AppImage scaricata online per ricreare la cartella squashfs-root
+      - chmod +x SimpMusic.AppImage
+      - ./SimpMusic.AppImage --appimage-extract
+
+      # Copiamo l'app e installiamo lo script (Invariato)
       - cp -r squashfs-root /app/simpmusic
       - install -D -m 755 start-simpmusic /app/bin/start-simpmusic
       
@@ -55,12 +59,13 @@ modules:
         EOF
       
     sources:
-      # L'App estratta
-      - type: dir
-        path: squashfs-root
-        dest: squashfs-root
+      # 2. MODIFICA: Rimosso il type "dir" locale e inserito il download diretto dall'URL ufficiale v1.3.0
+      - type: file
+        url: https://github.com/maxrave-dev/SimpMusic/releases/download/v1.3.0/SimpMusic-x86_64.AppImage
+        dest-filename: SimpMusic.AppImage
+        sha256: 9f15400235084b1106ccb37a489ff8737ed104b1e05fa021b905c8f5bf40db7f
         
-      # IL VERO E PROPRIO SCRIPT MAGICO
+      # IL VERO E PROPRIO SCRIPT MAGICO (Invariato)
       - type: script
         dest-filename: start-simpmusic
         commands:
@@ -68,7 +73,7 @@ modules:
           - mkdir -p ~/.config/simpmusic ~/.config/SimpMusic
           - mkdir -p ~/.local/share/simpmusic ~/.local/share/SimpMusic
           - mkdir -p ~/.cache/simpmusic ~/.cache/SimpMusic
-          - mkdir -p ~/SimpMusicData
+          - ~/SimpMusicData
           
           # 2. Lanciamo il binario puro, ora troverà tutte le sue casette pronte ad accoglierlo
           - exec /app/simpmusic/bin/simpmusic "$@"
