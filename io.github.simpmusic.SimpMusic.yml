@@ -63,7 +63,7 @@ modules:
       - type: file
         url: https://github.com/maxrave-dev/SimpMusic/releases/download/v2.5.0/SimpMusic-x86_64.AppImage
         dest-filename: SimpMusic.AppImage
-        sha256: 9f15400235084b1106ccb37a489ff8737ed104b1e05fa021b905c8f5bf40db7f
+        sha256: 5b3b826c1f49875a85dc4af6818940c67a8cacbaaebdf63522ba684b232987c8
         
       # IL VERO E PROPRIO SCRIPT MAGICO (Invariato)
       - type: script
