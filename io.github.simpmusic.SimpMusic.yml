@@ -61,7 +61,7 @@ modules:
     sources:
       # 2. MODIFICA: Rimosso il type "dir" locale e inserito il download diretto dall'URL ufficiale v1.3.0
       - type: file
-        url: https://github.com/maxrave-dev/SimpMusic/releases/download/v1.3.0/SimpMusic-x86_64.AppImage
+        url: https://github.com/maxrave-dev/SimpMusic/releases/download/v2.5.0/SimpMusic-x86_64.AppImage
         dest-filename: SimpMusic.AppImage
         sha256: 9f15400235084b1106ccb37a489ff8737ed104b1e05fa021b905c8f5bf40db7f
         
