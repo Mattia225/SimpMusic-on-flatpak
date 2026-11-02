@@ -14,7 +14,7 @@ for cmd in git flatpak flatpak-builder; do
     fi
 done
 
-REPO_URL="https://github.com/Mattia225/simpmusic-flatpak.git"
+REPO_URL="https://github.com/Mattia225/SimpMusic-on-flatpak.git"
 TARGET_DIR="simpmusic-flatpak"
 
 # Clone or update the repository
