@@ -11,7 +11,7 @@ finish-args:
   - --share=network
   - --device=dri
   
-  # I Permessi Chirurgici (Maiuscole e Minuscole) con auto-creazione sul sistema host
+ 
   - --filesystem=xdg-download
   - --filesystem=xdg-music
   - --filesystem=xdg-config/simpmusic:create
@@ -20,11 +20,6 @@ finish-args:
   - --filesystem=xdg-data/SimpMusic:create
   - --filesystem=~/SimpMusicData:create
 
-  # Fix Grafici e Variabili d'ambiente per Sway/Wayland
-  - --env=_JAVA_AWT_WM_NONREPARENTING=1
-  - --env=SKIKO_RENDER_API=SOFTWARE
-  - --env=LIBGL_ALWAYS_SOFTWARE=1
-  - --env=VLC_DISABLE_HW_ACCEL=1
 
 modules:
   - name: simpmusic
