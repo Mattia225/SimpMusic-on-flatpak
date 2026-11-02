@@ -1,6 +1,6 @@
 # SimpMusic Flatpak Manifest
 
-This repository contains an automated Flatpak manifest for SimpMusic (version 1.3.0), specifically optimized for Wayland environments (such as Sway WM and Hyprland WM) and configured with extended data persistence parameters.
+This repository contains an automated Flatpak manifest for SimpMusic (version 2.5.0), specifically optimized for Wayland environments (such as Sway WM and Hyprland WM) and configured with extended data persistence parameters.
 
 ---
 
